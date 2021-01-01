@@ -136,7 +136,7 @@ $ git push origin master
 
 * 업데이트가 완료되면 아래의 명령어를 통해 commit 이력을 남기고 원격 저장소로 push한다.
 
-  ```sshell
+  ```shell
   $ git add .
   $ git commit -m '학습 내용 추가'
   $ git push origin master
