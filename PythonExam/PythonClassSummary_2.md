@@ -160,8 +160,9 @@
 * len 함수: 메서드가 아닌 함수로 되어있음 
 * `isalpha` 와 같이 is로 시작하는 메서드들은 리턴값이 bool 형임 (True, False)
 * `lstrip`, `rstrip`,`strip` 메서드
-  * 왼쪽, 오른쪽, 양측 공백을 제거
-
+  
+* 왼쪽, 오른쪽, 양측 공백을 제거
+  
 * 메서드: 클래스에 소속된 함수
 
   * 객체에 대해 특화된 작업 수험
@@ -260,19 +261,22 @@ print("%d월 %d일은 %s이다." % (month, day, anni)) # 여러 개일때 튜플
   height = 180.99
   
   print("이름:{}, 나이:{}, 키:{}".format(name,age,height))
-  print("이름:{0:s}, 나이:{1:d}, 키:{2:f}".format(name,age,height))
+  print("이름:{0:s}, 나이:{1:d}, 키:{2:f}".format(name,age,height)) # 튜플에 인덱스 표시한 것
   print("이름:{0:10s}, 나이:{1:5d}, 키:{2:8.2f}".format(name,age,height))
   print("이름:{0:^10s}, 나이:{1:>5d}, 키:{2:<8.2f}".format(name,age,height))
   print("이름:{0:$^10s}, 나이:{1:>05d}, 키:{2:!<8.2f}".format(name,age,height))
+  
+# f-string (파이썬 3.6부터 가능)
+  print(f"이름:{name}, 나이:{age}, 키:{height}") # 변수 직접 넣기, 뒤에는 변수 자료형
+  print(f"이름:{name:s}, 나이:{age:d}, 키:{height:f}")
   ```
-
-+ 
-
-+ 
+  
 
 
 
 ### 리스트 컴프리헨션
+
+* 리스트에 소속되는 각각의 값을 **요소**라고 함
 
 * 리스트, 딕셔너리, 셋만 컴프리헨션 구문 적용 가능 (튜플은 사용 불가)
 
@@ -284,20 +288,196 @@ print("%d월 %d일은 %s이다." % (month, day, anni)) # 여러 개일때 튜플
 * 대괄호 안에 for문과 if문을 적어서 우리가 원하는 리스트를 생성함
 
   * 더 간결한 코드와 빠른 속도로 만들 수 있음
+  
+* [값에 대한 수식 for 변수 in 대상 if 조건]
 
 
+
+### 리스트 관리 (메서드)
+
+* append는 끝에 추가, insert는 (삽입할 위치, 값)
+* 삭제: remove, del, clear (리스트 모든요소 삭제), 빈 리스트 대입 (`score[1:4]= []`)
+* 검색: index (위치 찾음), count(요소값의 개수), min, max, in, not in
 
 * `list.sort()`: 리스트 직접 변화
+  * list.reverse() : 요소 순서 반대로 정렬
 * sorted(리스트) : 정렬된 리스트를 새롭게 하나 생성
+
+
+
+### 튜플
+
+* 여러개의 변수에 값을 한꺼번에 대입
+  * `tu = "이순신", "김유신", "강감찬"`
+
+* `d,m = divmod(7,3)`  (몫: 2 , 나머지 1)
+  * 파이썬 내장함수로 나눅셈의 몫과 나머지를 튜플로 묶어 리턴
+
+
+
+### 사전 (딕셔너리)
+
+* `dic[key]` 로  빠른 검색 가능
 
 * 딕셔니리에서 찾는 키가 없을 경우 예외 발생
   * 체크해서 찾기
   * 예외 처리 구문
   * get 메서드 사용
-* 집합 컴프리헨션 오타 -> 대괄호 말고 중괄호 여야함
+
+* 사전[키] 할 시 키의 존재여부에 따라 동작이 다름
+  * 존재할 경우: 기존 값의 변경
+  * 존재하지 않을 경우: 키를 추가 (값도 쌍으로)
+* del 
+  * 해당 키를 찾아 값과 함께 삭제
+* 대표 메서드: keys , values, update(두 개 사전을 병합) 
+* `dict 함수` : 빈 사전 만들거나 다른 자료형을 사전으로 변환함
+
+* {키와 값에 대한 수식 for 변수 in 대상 if 조건}
+
+  * ```python
+    students = dict(둘리=90, 또치=85, 도우너=95, 희동이=75, 마이콜=80)
+    
+    pass_students = { k : v for k, v in students.items()}
+    pass_students = { k : v for k, v in students.items() if v > 80}
+    ```
+
+
+
+### 집합
+
+* `set 함수` : 빈 집합 만들거나 다른 컬렉션을 집합형으로 변환함
+
+* 집합 컴프리헨션 
+  * {값에 대한 수식 for 변수 in 대상 if 조건}
+  * 딕셔너리처럼 중괄호임!
+* add (append 없음), update(집합끼리 결합하여 합집함, 중복 불허)
+
+
+
+### 실습 및 예제
+
 * join시 리스트 안에 요소는 문자열이어야 함 (join은 문자열 객체의 메서드임)
+
 * 지능형 리스트 개념은 많이 배웠으나, 스스로 실습해야 익숙해질 것. 시간이 필요함
-* 
+
+* ```python
+  def mydict(**n):
+      d={}
+      for k,v in n.items():
+          d['my'+k] = v
+      return d
+  print(mydict())
+  print(mydict(name = "Hyun", age = 26)) # 키워드 가변 아규먼트이므로 자동으로 딕셔너리가 되기 때문에 n.items()로 for문 돌려야함
+  
+  
+  # 딕셔너리를 포문에 그냥 넣으면 key값이 포문 돈다.
+  # 위처럼 해야 키 - 값으로 나누어져 돈다.
+  # if 변수: 하면 변수가 비어있으면 false라 돌지 않음
+  # 즉 len(변수)!=0 말고, if 변수 해도됨
+  ```
+
+* ```python
+  def myprint (*a, **args):
+     deco = '**'
+      s = ','
+      if 'deco' in args.keys():
+          deco = args['deco'] # 딕셔너리[키] = 값
+      if 'sep' in args.keys():
+          s = args['sep']
+      '''deco = args.get("deco", "**")
+      s = args.get("sep", ",")'''
+  
+      result = ''
+      if len(a) == 0:
+          print("Hello Python")
+      else:
+          result += deco
+          for i in range(len(a)):
+              result += str(a[i])
+              if i < (len(a)-1):
+                  result += s
+          result += deco
+          print(result)
+  
+  myprint(10,20,30, deco = "@", sep ="-")
+  myprint("python", "javascript", "R", deco = "$")
+  myprint("가", "나", "다")
+  myprint(100)
+  myprint()
+  ```
+
+* ```python
+  oldlist = [17,2,14,6,10,19,16,12,5]
+  newlist1 = [ oldlist ]
+  print(newlist1) # 요소가 1개인 이중 리스트 (1행, 10열)
+  
+  newlist2 = list( [1,2,3,4,5,6,7,8] )
+  print(newlist2) # 이중리스트 아니고 일반 리스트
+  
+  newlist3 = list( (1,2,3,4,5,6,7,8) )
+  print(newlist3) # 일반리스트
+  
+  newlist4 = list( {1,2,3,4,5,6,7,8} )
+  print(newlist4)
+  
+  newlist5 = list( "ABC")
+  print(newlist5) # -> ['A','B','C']
+  
+  newlist6 = [ x for x in range(1, 9) ]
+  print(newlist6)
+  
+  newlist7 = [ x for x in oldlist if x % 2 ] # 2로 나눈 나머지가 0이면 조건식 false, True일 때만 조건성립
+  print(newlist7)
+  ```
+
+* ```python
+  list5 = [ d   if d % 2  else  '짝수' for d in range(1, 16)  ]
+  print(list5)
+  # else에 해당하는 애들은 "짝수"가 대신 들어감
+  
+  oldlist = [1, 2, 'A', False, 3]
+  newlist = [i * i for i in oldlist if type(i) == int]
+  ```
+
+* ```python
+  f = []
+  print(type(f)) # list
+  print(f.extend([1,2,3]))
+  print(f.reverse()) # 리스트의 변화를 주는 메서드들인데 자체 리턴값은 None임
+  print(f)
+  ```
+
+* ```python
+  l1 = [1,2,3,4,5]
+  l2 = l1  
+  # 참조값을 그대로 가져온 것이라 하나의 리스트를 공유하고 있음
+  # 즉 l1값 바꾸면 l2도 같이 바뀜. 
+  ```
+
+* ```python
+  data = [1,2,3,4]
+  
+  print(data)
+  print(*data) # 아규먼트에서도 *을 붙일 수 있음, 리스트 요소 값들을 쪼개서 야구먼트로 전달함!!
+  print(data[0], data[1], data[2], data[3])
+  
+  x,*y,z = [10,20,30,40]
+  print(x)
+  print(y) # 처음, 마지막 뺴고 모두 y한테 할당
+  print(z)
+  ```
+
+* ```python
+  # 앞에 포문이 바깥 for문 , 중첩된 for문
+  listv = [dan * num for dan in range(1, 10) for num in range(1, 10)]
+  setv =  { dan * num for dan in range(1, 10) for num in range(1, 10)}
+  ```
+
+* 파이썬 강의교안 6에서 지능형 리스트 부분 기억할 것 추가하기 + 실습 메일 보내기
 
 
+
+## Day 8 (0113)
+
+> 뭐할까요~~?
 
