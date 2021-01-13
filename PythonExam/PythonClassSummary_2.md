@@ -210,15 +210,12 @@
   print(" 찍고 ".join(city))
   ```
 
-* 
 
 ### 포맷팅 
 
 > 방법이 몇 개 있음
 
 * 문자열 사이사이에 다른 정보를 삽입하여 조립하는 기법
-
-
 
 #### format % value
 
@@ -255,24 +252,24 @@ print("%d월 %d일은 %s이다." % (month, day, anni)) # 여러 개일때 튜플
 * `%10.8f` 와 같이 소수점 이하 표시 자리수 설정
   * 기본값은 6개 (float)
 
-+ ```python
-  name = "재웅"
-  age = 26
-  height = 180.99
-  
-  print("이름:{}, 나이:{}, 키:{}".format(name,age,height))
-  print("이름:{0:s}, 나이:{1:d}, 키:{2:f}".format(name,age,height)) # 튜플에 인덱스 표시한 것
-  print("이름:{0:10s}, 나이:{1:5d}, 키:{2:8.2f}".format(name,age,height))
-  print("이름:{0:^10s}, 나이:{1:>5d}, 키:{2:<8.2f}".format(name,age,height))
-  print("이름:{0:$^10s}, 나이:{1:>05d}, 키:{2:!<8.2f}".format(name,age,height))
-  
-# f-string (파이썬 3.6부터 가능)
-  print(f"이름:{name}, 나이:{age}, 키:{height}") # 변수 직접 넣기, 뒤에는 변수 자료형
-  print(f"이름:{name:s}, 나이:{age:d}, 키:{height:f}")
+```python
+name = "재웅"
+age = 26
+height = 180.99
+
+print("이름:{}, 나이:{}, 키:{}".format(name,age,height))
+print("이름:{0:s}, 나이:{1:d}, 키:{2:f}".format(name,age,height)) # 튜플에 인덱스 표시한 것
+print("이름:{0:10s}, 나이:{1:5d}, 키:{2:8.2f}".format(name,age,height))
+print("이름:{0:^10s}, 나이:{1:>5d}, 키:{2:<8.2f}".format(name,age,height))
+print("이름:{0:$^10s}, 나이:{1:>05d}, 키:{2:!<8.2f}".format(name,age,height))
+```
+
+### f-string (파이썬 3.6부터 가능)
+
+  ```python
+print(f"이름:{name}, 나이:{age}, 키:{height}") # 변수 직접 넣기, 뒤에는 변수 자료형
+print(f"이름:{name:s}, 나이:{age:d}, 키:{height:f}")  
   ```
-  
-
-
 
 ### 리스트 컴프리헨션
 
@@ -280,18 +277,16 @@ print("%d월 %d일은 %s이다." % (month, day, anni)) # 여러 개일때 튜플
 
 * 리스트, 딕셔너리, 셋만 컴프리헨션 구문 적용 가능 (튜플은 사용 불가)
 
-* ```python
-  numlist4 = [ num for num in range(1, 6) ] # 리스트 컴프리헨션
-  print("list4 = {}".format(numlist4))
-  ```
-
 * 대괄호 안에 for문과 if문을 적어서 우리가 원하는 리스트를 생성함
 
-  * 더 간결한 코드와 빠른 속도로 만들 수 있음
-  
+* 더 간결한 코드와 빠른 속도로 만들 수 있음
+
 * [값에 대한 수식 for 변수 in 대상 if 조건]
 
-
+```python
+numlist4 = [ num for num in range(1, 6) ] # 리스트 컴프리헨션
+print("list4 = {}".format(numlist4))
+```
 
 ### 리스트 관리 (메서드)
 
@@ -328,6 +323,7 @@ print("%d월 %d일은 %s이다." % (month, day, anni)) # 여러 개일때 튜플
   * 존재할 경우: 기존 값의 변경
   * 존재하지 않을 경우: 키를 추가 (값도 쌍으로)
 * del 
+  
   * 해당 키를 찾아 값과 함께 삭제
 * 대표 메서드: keys , values, update(두 개 사전을 병합) 
 * `dict 함수` : 빈 사전 만들거나 다른 자료형을 사전으로 변환함
@@ -473,11 +469,144 @@ print("%d월 %d일은 %s이다." % (month, day, anni)) # 여러 개일때 튜플
   setv =  { dan * num for dan in range(1, 10) for num in range(1, 10)}
   ```
 
-* 파이썬 강의교안 6에서 지능형 리스트 부분 기억할 것 추가하기 + 실습 메일 보내기
+* 파이썬 강의교안 6에서 지능형 리스트 부분 기억할 것 추가하기 
+
+* get함수 관련 내용도 조사 후 추가해보자! 
 
 
 
 ## Day 8 (0113)
 
-> 뭐할까요~~?
+> comprehension, packunpac, str 실습 제출 후 실습리뷰
+>
+> 이후 컬렉션 관리 함수, 람다 함수, 컬렉션의 사본 강의 교안 및 예제 리뷰
 
+### 컬렉션 관리 함수
+
+#### enumerate
+
+* 순서값과 요소값을 한꺼번에 구하는 내장함수
+
+* `for i,j in enumerate(리스트, 문자열, 튜플)`
+  
+  * 인덱스를 i, 값(요소)를 j에 저장함
+  
+* ```python
+  score = [ 88, 95, 70, 100, 99 ]
+  for no, s in enumerate(score, 1): # (객체, 숫자), 표시된 숫자부터 연산하며 기본값 0임
+      print(str(no) + "번 학생의 성적 :", s)
+  
+  names = "둘리,고길동,희동이,마이콜,또치,도우너"
+  namelist = names.split(",") # 리스트 생성
+  print(namelist)
+  namelist.sort()
+  
+  for num, name in enumerate(namelist) :
+      print(f"이름순으로 {name}는 {num+1}번입니다.") # f string 사용
+      
+  for data in enumerate(namelist) :
+      print(f"enumerate를 적용한 결과 : {data}") # for문 해당 변수 한개이기에 튜플로 들어옴 (언패킹 안된다 생각)
+            
+  for num, name in enumerate(namelist, 100) : # 인덱스 숫자 시작, 기본값 0
+      print(f"이름순으로 {name}는 {num}번입니다.") 
+  
+      # {num} 100번부터 시작됨! 
+  ```
+
+#### zip
+
+* 여러 개 컬렉션 합쳐서 하나로 만듬
+
+* 두 리스트의 대응되는 요소끼리 짝지어 **튜플 zip 객체** 생성 (zip의 type =>  `zip`)
+  * 대응되는 숫자까지만 한다. (뒤에 남는 건 사라짐)
+  * 생성되는 튜플의 순서는 원본 리스트의 순서와 같음
+  
+* 1회성임!
+  
+  * zip을 한 번 호출하고 다음 번엔 사용이 안된다! (이후 값에 아무값도 없음)
+  
+* ```python
+  zip2 = zip([1, 2, 3], [4, 5, 6], [7, 8, 9])
+  print(list(zip2))
+  
+  # [(1, 4, 7), (2, 5, 8), (3, 6, 9)]
+  # 출력시 list() 나 dict() 함수 사용해야 함 (아니면 값 말고 <zip object at 0x000001F365A520C0> 이런 값 출력)
+  ```
+
+* ```python
+  alist = ['a1', 'a2', 'a3']
+  blist = ['b1', 'b2', 'b3']
+  for i, (a,b) in enumerate(zip(alist,blist)):
+      print(i,a,b)
+  """
+  """
+  0 a1 b1
+  1 a2 b2
+  2 a3 b3
+  ```
+
+### 파이썬의 함수는 일급 객체
+
+* 파이썬의 함수는 변수에 저장할 수도 있고, 함수를 담고 있는 변수를 통해서 함수 호출도 됨
+* 다른 함수 호출 시 아규먼트로 전달 가능
+* 함수의 리턴값으로 전달 가능
+* 일반적인 데이터처럼 사용 가능
+
+
+
+### 람다 함수
+
+> 강의 교안
+
+​	
+
+#### filter 함수
+
+* 아규먼트로 함수 줘야 함
+* 리스트 요소 중 조건에 맞는 것만을 골라냄
+* 첫 번째 인수: 조건 지정하는 함수
+* 두 번째 인수: 대상 리스트 
+
+
+
+#### map 함수
+
+* 모든 요소에 대한 변환함수 호출, 새 요소 값으로 구성된 리스트 생성
+* 첫 번째 인수: 값을 변환하는 함수
+
+* 두 번째 인수: 대상 리스트
+
+
+
+#### 람다 함수
+
+* 이름 없고 입력과 출력만으로 함수를 정의하는 축약된 방법
+* **lambda 인수 : 식**
+  * 인수는 여러 개 가질 수 있음
+  * 리턴 값 주면 안됨
+  * 람다 함수내에서는 변수 정의 불가
+  * 람다 함수내에는 식만 정의 가능
+
+
+
+### 컬렉션의 사본
+
+>11장 내용
+
+* 데이터의 값을 비교할 때는 `a is b` 말고 `a == b `써라!!
+
+
+
+#### 리스트의 메모리 관리 방식
+
+* 
+
+
+
+### 모듈
+
+
+
+예외 처리 구문부터 다음주 월요일
+
+내일 1시간만 파이썬하고, 다른 파트 공부
