@@ -788,7 +788,7 @@ print("list4 = {}".format(numlist4))
 * 리스트는 기본적으로 값을 연속으로 저장하는 것이 아니라 값이 있는 주소를 저장하는 방식이다.
 * 이런 방식이여서 중첩리스트도 사용 가능하고, 다양한 형태의 변수가 하나의 리스트에 들어갈 수 있음
 
-
+ 
 
 ### 모듈
 
@@ -808,11 +808,72 @@ print("list4 = {}".format(numlist4))
 
 #### random 모듈
 
-* `random.randint(begin, end)`
+* `random.randint(begin, end)` 
 
-* stmodule 살펴보고 적을 것 있으면 적기 (+ 어제꺼 마지막 메모도 기억)
+	#### os 모듈
+
+#### sys 모듈
+
+* 파이썬 해석기가 실행되는 환경과 해석기의 여러 기능 조회 및 관ㄹ
+
+#### 명령행 인수
+
+* 파이썬에서 실행 파일 뒤에 인수를 전달할 수 있음
+* **sys.argv** 읽어 명령행 인수의 값 읽을 수 있음
+* `if (len(sys.argv) == 1):` 이렇게 시스템 아규먼트의 갯수에 따라 조건문 구현 가능
+* 다만 인수보다는 질문을 하고 직접 입력받아 사용하는 것이 더 정확함
+
+
 
 ## Day 9 (0114)
 
-> 얼마나 한지 요약
+> 강의교안 및 stmodule (1~9)
+>
+> 모듈 내에 대략 어떤 기능을 가진 함수들이 있는지 알기
 
+```python
+# =============== import  ===============
+import math
+print(math.sqrt(2))
+
+# =============== from import  ===============
+from math import sqrt
+print(sqrt(2))
+
+# =============== import as  ===============
+import math as m
+print(m.sqrt(2))
+
+# =============== from as  ===============
+from math import sqrt as sq
+print(sq(2))
+```
+
+* import를 모듈단위까지 해도 되고, 더 나아가 함수까지 해도 됨
+
+  * 다만 그에 맞춰서 사용할 때 문법이 조금 달라짐
+  * as는 해당 그것을 별칭으로 부른다 생각하면 됨
+
+* ```python
+  time.sleep(1) # 해당 시간 만큼 잠깐 실행을 쉬어가는 명령
+  ```
+
+  * 크롤링할 때 필요한 경우 있음
+
+* ```python
+  import time
+  
+  start = time.time() # 시작 시간
+  for a in range(1000):
+      print(a)
+  end = time.time() # 끝나는 시간
+  print(end - start)
+  ```
+
+  * 경과 시간을 알아보는  코드 
+
+
+
+## Day 10 
+
+> 화이팅!
