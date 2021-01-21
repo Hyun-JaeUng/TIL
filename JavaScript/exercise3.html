@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+function calc(){
+    var result
+    if (arguments.length == 0)
+        result = 0
+    else {
+        result = 0
+        for (var i=0; i < arguments.length; i++){
+            if (typeof arguments[i] == "number"){
+                result += arguments[i]
+                console.log(result)
+            }
+            else {
+                result = "숫자만 전달하세요."
+                break
+            }
+        }
+    }
+    return result
+}
+document.write("<h3>" + calc() + "</h3>")
+document.write("<h3>" + calc(10,20,'30') + "</h3>")
+document.write("<h3>" + calc(1,2,3,4,5) + "</h3>")
+document.write("<h3>" + calc(10,'가나다',20) + "</h3>")
+document.write("<h3>" + calc('가나', '다나가') + "</h3>")
+document.write("<h3>" + calc(1,2,3,4,5,100,300) + "</h3>")
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>1월 21일 실습1</title>
+</head>
+<body>
+<h1>실습 1</h1>
+<hr>
+<script>
+    var a1 = [10,5,7,21,4,8,18];
+    var sum = 0;
+    var min = a1[0];
+    var max = a1[0];
+    // for (var i=0; i< a1.length; i+=1) 도 됨! 객체.length 임
+    for (var i=0; i<7; i+=1) {
+        sum += a1[i]
+        if (min > a1[i]) {
+            min = a1[i]
+            }
+        if (max < a1[i]) {
+            max = a1[i]
+            }
+        }
+    document.write("<h1>모든 원소의 합: " + sum + "</h1>");
+    document.write("<li>최대값 : " + max + "</li>");
+    document.write("<li>최소값 : " + min + "</li>");
+</script>
+</body>
+</html>
