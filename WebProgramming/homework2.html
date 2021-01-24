@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 학습</title>
+    <style>
+        body {
+            margin : 0;
+            padding : 0;
+        }
+        header {
+            color : purple;
+            width : 100%;
+            height : 100px;
+            background-image : linear-gradient(to right, red, navy, blue, pink, green, pink, blue, navy, red);
+            text-align : center;
+            text-shadow: 2px 2px 3px white;
+        }
+        nav {
+            text-align : center;
+        }
+        a {
+            margin : 30px;
+            text-decoration : none;
+        }
+        a:hover {
+            font-weight : bold;
+        }
+        section {
+            height : 1200px;
+            margin-left : auto;
+            margin-right : auto;
+        }
+        article {
+            width : 60%;
+            height : 300px;
+            margin-left : auto;
+            margin-right : auto;
+            border : 2px dotted purple;
+            border-radius : 30px;
+            margin-top : 20px;
+            margin-bottom : 20px;
+        }
+        ul {
+            margin-left : 30px;
+        }
+        h2,h3 {
+            text-indent : 30px;
+        }
+        table,tr,th {
+            border : 1px solid green;
+            border-collapse : collapse;
+            margin-left : 30px;
+        }
+        th {
+            background-color : green;
+        }
+        .caption {
+            text-align : center;
+            font-weight : bold;
+        }
+        img {
+            height : 150px;
+            width : 300px;
+            display : block;
+            margin : 0 auto ;
+        }
+        aside {
+            width : 100%
+            height : 320px;
+            text-align : center;
+        }
+        footer {
+            width : 100%;
+            height : 50px;
+            background-color : black;
+            text-align : center;
+            color : white;
+        }
+
+        em {
+            font-weight : bold;
+            margin-left : auto;
+            margin-right : auto;
+        }
+    </style>
+
+</head>
+<body>
+<header>
+    <h1>HTML5 학습</h1>
+    <nav>
+        <a href = "https://www.w3.org/">W3C</a>
+        <a href = "https://www.w3schools.com/">W3C Schools</a>
+        <a href = "https://jquery.com/">jQuery</a>
+    </nav>
+</header>
+
+<section>
+    <article>
+        <h2 style="color:purple">나의 소개</h2>
+        <ul>
+            <li>이름 : 현재웅</li>
+            <li>별명 : 미래웅</li>
+            <li>관심기술 : HTML5, PYTHON</li>
+            <li>취미: 축구, LOL</li>
+        </ul>
+    </article>
+
+    <article>
+        <h3 style="color:green">올해 재미있게 읽은 책</h3>
+        <table border = "1">
+            <tr><th>제목</th><th>장르</th></tr>
+            <tr><td>나미야 잡화점의 기적</td><td>소설</td></tr>
+            <tr><td>파이썬웹프로그래밍</td><td>교육</td></tr>
+            <tr><td>파이썬정복</td><td>교육</td></tr>
+        </table>
+    </article>
+
+    <article>
+        <h3 style="color:blue">자랑하고 싶은 <span style="color:purple">우리 동네</span>의 아름다운 곳</h3>
+        <figure>
+            <figcaption><div class="caption">마포대교는 한강에 4번째로 가설된 교량이다. 여의도와 마포를 이어주는 대교입니다.</div></figcaption>
+            <img src = "http://localhost:8000/edu/images/mapo.jpg" width = '900' height = "600">
+            <figcaption><div class="caption">서울 마포구 도화동에 있는 마포대교</div></figcaption>
+        </figure>
+    </article>
+</section>
+
+<aside>
+    <video width="70%" height="300" controls>
+        <source src="trailer.mp4">
+    </video><br>
+</aside>
+
+<footer>
+    <em>
+        이 문서는 현 재웅에 의해 HTML5와 CSS3 기술을 사용하여 2021년 01월 24일에 작성하였습니다. (ver 1.0)
+    </em>
+</footer>
+</body>
+</html>
