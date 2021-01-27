@@ -1,4 +1,4 @@
-# Django(장고) 프로그래밍
+# Django 프로그래밍 수업 요약
 
 > 0126_10시부터 수업
 
@@ -104,5 +104,115 @@
 * static 폴더 : 이미지와 같은 정적인 파일 넣어두는 폴더, 클라이언트한테 작업없이 던져지는 파일
   *  `STATIC_URL = '/static/'` : settings에 디폴트값으로 있음
 
-> secondapp에 대한 코드 설명은 내일! 
+> 0127 수업 시작!
 
+#### 장고 강의교안 1 (가상환경부터 리뷰하면서 설명)
+
+* `127.0.0.1` : 모든 컴터에서 자기 컴터 도메인 의미함
+  * 즉, localhost 의미함
+* 장고 프로그래밍에서 가상환경 만드는건 필수는 아님.
+  * 테마(데이터 분석, 웹 서버)에 맞게 가상환경을 만들고, 이에 맞춰 추가 API 설치하는 것이 일반적 
+* 경로 탐색에서 `cd \` 처럼 백슬래쉬부터 시작하면 최상위부터 경로 탐색을 시작한다는 의미
+
+* 장고 프로젝트 생성: `cd 명령어 두번` -> `activate` -> DJANGOexam으로 디렉토리 이동
+
+ -> `django-admin startproject '프로젝트 이름'`
+
+* `settings.py` : 장고 프로그래밍에서 일어나는 환경설정하는 파일
+* `urls.py`: urlpatterns에서 path 설정
+
+#### secondapp 코드 설명
+
+* HttpRequest: HTTP 프로토콜 기반으로 요청이 왔을 때 요청 관련 정보를 제공하는 객체, **요청 처리**
+  
+  * 뷰함수가 호출될 때 아규먼트로 전달된다. (장고 서버가 객체를 생성)
+* HttpResponse: HTTP 프로토콜기반으로 온 요청에 대한 응답시 사용하는 객체, **응답 처리**
+* 응답 내용을 담는다. (HTML 태그문자열, 템플릿을 사용한 랜더 객체)
+* 템플릿 변수: {{ 변수명 }} => 값 표현
+
+  * 변수는 뷰가 넘겨준 딕셔너리의 key 이름임
+  * 꼭 딕셔너리로 전달해야 함
+* 템플릿 태그(로직): {% 로직 %} => 로직 구현 
+
+  * 화면에 영향은 없으나 post일때는 토큰이 있어야됨. -> 보안때문에 
+* `<a>` 태그로 요청하는건 무조건 get 방식임
+* get 방식: URL 직접 입력할 때, 하이퍼링크 요청할 때,  form태그의 method 속성 get일 때
+* post 방식: form태그의 method 속성 post일 때
+  * 상대적으로 엄격한 보안, 뒤에 / 안붙이면 에러남
+
+#### HttpRequest와 HttpResponse
+
+* 장고는 request와 response 객체로 서버와 클라이언트가 정보를 주고 받음
+
+  * 이를 위해 django.http 모듈에서 HttpRequest와 HttpResponse API를 제공함
+
+* 서버 - 클라이언트 통신 시 아래와 같은 절차로 데이터가 오고감
+
+  1. 특정 페이지가 요청(request)되면, 장고는 요청 시 메타데이터(여러 다양한 정보)를 포함하는 HttpRequest 객체를 생성
+
+  2. 장고는 urls.py에서 정의한 특정 View 함수에 첫 번째 인자로 해당 객체(request)를 전달
+  3. 해당 View는 결과값을 HttpResponse 혹은 JsonResponse 객체에 담아 전달
+
+* 뒤에 `/` 안붙이면 `/` 붙여서 통신이 한번 더 일어남
+  
+  * 불필요한 요청이 추가되는 것이라 URL 끝에 `/` 붙여서 요청해야함!
+
+#### secondapp - exam2_1
+
+* get 함수 설명 
+* hidden 내용 설명
+* get 방식은 쿼리 문자열이 주석빌드에 보임
+* post 방식은 서버에게 전달되는 쿼리 문자열이 브라우저에 보이지 않음. 
+  * 로그인, 회원가입시에는 이 방식이 좋음
+
+오늘의 핵심: get 방식 처리와 post 방식의 처리하는 방법과 차이점 아는 것
+
+#### Query 문자열
+
+* HTTP 클라이언트가 HTTP 서버 요청시 서버에서 요청하려는 대상의 URI가 전달되는데, 이 때 함께 전달될 수 있는 문자열
+* name=value 형식으로 구성
+* 여러 개의 name=value가 사용될 때는 & 기호로 구분해야 함
+* 영문과 숫자는 그대로 전달되지만 한글과 특수문자들은 %기호와 16진수 코드값으로 전달됨 (UTF-)
+* 공백문자는 + 기호 또는 %20로 전달된다. 
+* Query 문자열을 가지고 HTTP 서버에게 정보를 요청할 때는 두 가지 요청 방식중에서 한 개를 선택할 수 있다.
+  * GET: Query 문자열이 외부에 보여짐. 요청 URL 뒤에 ? 기호와 함께 전달되기 때문
+  * POST: Query 문자열이 외부에 보여지지않고, 길이에 제한이 없다. 
+
+#### secondapp.exam3~ 
+
+* exam3:  `선택한 번호 : {{ number }}` -> number라는 키를 가진 딕셔너리 값인 5가 출력
+
+* exam4: 리스트를 view에서 templates로 전달함
+  * 템플릿 태그 이용한 예시 (html 파일 안에서 파이썬 처럼 코딩함)
+  * for 태그와 endfor 태그, contents로 구성
+* 템플릿 태그 설명 - 강의교안 (csrf_token)
+
+* exam5 : Django의 if문과 else, endif 예제
+
+  * 쿼리에 내용 주는 것 배움. 
+
+* exam6: 쿼리문자열에서는 숫자도 문자로 인식해서 넘어옴!
+
+  * context = None이 넘어오면 form태그 출력
+
+  * exam6.html의 "`<input>` 태그는 name 속성의 값"과 "쿼리에서 추출하고자 하는 이름"과 똑같아야한다. 
+
+    * ```html
+      <input type="number" name="number" placeholder="숫자를 입력하세요" required>
+      ```
+
+    * ```python
+      def exam6(request) :
+          if request.method == 'POST':
+              num = int(request.POST['number'])
+              context = { 'num' : num*num }
+          else :
+               context = None
+          return render(request, 'exam6.html', context)
+      ```
+
+      + name = "**Number**"와 request.Post['**number**'] 가 같아야한다.  
+
+> 강의교안 내일 다시 한번 정리 + exam6을 통해 실습 아침에 해결 
+>
+> 0127 수업 끝. 
