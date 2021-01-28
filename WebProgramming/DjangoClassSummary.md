@@ -216,3 +216,55 @@
 > 강의교안 내일 다시 한번 정리 + exam6을 통해 실습 아침에 해결 
 >
 > 0127 수업 끝. 
+
+* 오전 수업 아파서 놓침 - 실습 1시간, 리뷰 1시간, 수업 1시간
+
+> ㅇ
+
+* studyproject에 templates 폴더 만들어서 basesimple.html을 만들어 이용하기
+  * 이 파일의 형식을 가져와서 사용함으로써 다른 html을 편리하게 만들 수 있음
+  * `{% extends 'basesimple.html' %}` : 가져오는 형식 
+  * 이후 `{% block mycontent %}`와 `{% endblock %}` 사이에 원하는 내용 집어넣어 양식을 이용하는 것 
+
+* exam7: basesimple.html extend 하여 사용하는 예제
+
+* exam8: get방식은 직접 쿼리를 주소에 줄 수 있음.
+  * ex)  `~~~/secondapp/exam8/?q=현재웅`
+  * 유의할 점은 /?를 하고 쿼리를 줘야함! (`?` 뺴먹지 않기)
+  * 또한 view에서 쿼리문자열 추출할 때 쓰인 '문자' 그대로 줘야함!
+* exam9: getlist는 value 개수가 여러개 일때 쓰임
+  * 딕셔너리 값에 다시 딕셔너리 줬다. 
+  * 하나의 키 안에 담아서 전달해야해서 info 키를 주고 값을 딕셔너리로 줬다.
+  * get 방식과 getlist 방식 구분
+* exam10: name이라는 매개변수가 하나 추가되어 2개
+  * 그 후 urls.py에 path 설정 시 URL뒤에 `<name>` 추가. 
+* exam11: path에 `<int:age>` 추가, 매개변수 총 3개
+  * int를 써서 숫자형으로 요청받기 
+  * 안쓰면 무조건 문자열 취급
+* exam12: 거의 11과 유사, 연산결과도 함께 전달
+* 장고 실습3 (0128_1)
+
+* exam13: 여러가지 기능이 있는 걸 가볍게 알아가는 예제
+  * for 태그 사용 3개
+  * if 태그
+  * forloop는 장고 템플릿 파일에서 쓰는 내장변수
+  * `{% if food|length > 2 %}` : 필터링 하는 것
+    * `food의 길이가 2보다 크면` 이라는 의미
+    * food|length의 활용 (필터링)
+  * lorem도 내장변수
+  * 글자 관련 필터 사용예제
+  * cycle 관련 내용
+  * 모든 템플릿 태그들을 외울 필요는 없지만,  확인하는 느낌
+  * for - empty 태그 : for문 도는 시퀀스의  요소가 아예 없을 때 수행하고 싶은 내용을 empty 밑에 적음
+  * https://docs.djangoproject.com/en/3.1/ (장고 템플릿 태그 관련 설명하는 페이지)
+* exam14: `http://localhost:8000/secondapp/exam14/올라프1/10/3.87` 
+  * class 속성에 card나 btn 같은 이름을 부여했을 때 자동으로 여러가지 설정이 됨
+  * why?
+  * base.html에 **부트스트랩이 제공하는 기능**을 빌려다 쓴 코드가 있기 때문에 가능
+    * ex) https://www.w3schools.com/bootstrap4/bootstrap_buttons.asp
+    * 해당되는 클래스 속성을 따라 쓴 것.
+
+> exam 14 설명하다가 끝, 0129에 이어서 진행
+
+
+
