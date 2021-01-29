@@ -1,6 +1,6 @@
 # Django 프로그래밍 수업 요약
 
-> 0126_10시부터 수업
+> 01/26
 
 ### 웹의 기본 이해
 
@@ -215,19 +215,14 @@
 
 > 강의교안 내일 다시 한번 정리 + exam6을 통해 실습 아침에 해결 
 >
-> 0127 수업 끝. 
+> 01/27 수업 끝. 
 
-* 오전 수업 아파서 놓침 - 실습 1시간, 리뷰 1시간, 수업 1시간
-
-> ㅇ
-
+* 장고실습2(0127_2) + 실습 리뷰
 * studyproject에 templates 폴더 만들어서 basesimple.html을 만들어 이용하기
   * 이 파일의 형식을 가져와서 사용함으로써 다른 html을 편리하게 만들 수 있음
   * `{% extends 'basesimple.html' %}` : 가져오는 형식 
   * 이후 `{% block mycontent %}`와 `{% endblock %}` 사이에 원하는 내용 집어넣어 양식을 이용하는 것 
-
 * exam7: basesimple.html extend 하여 사용하는 예제
-
 * exam8: get방식은 직접 쿼리를 주소에 줄 수 있음.
   * ex)  `~~~/secondapp/exam8/?q=현재웅`
   * 유의할 점은 /?를 하고 쿼리를 줘야함! (`?` 뺴먹지 않기)
@@ -243,7 +238,7 @@
   * 안쓰면 무조건 문자열 취급
 * exam12: 거의 11과 유사, 연산결과도 함께 전달
 * 장고 실습3 (0128_1)
-
+  * 너무 어렵다... 나중에 리뷰 잘 듣고 이해하기. 
 * exam13: 여러가지 기능이 있는 걸 가볍게 알아가는 예제
   * for 태그 사용 3개
   * if 태그
@@ -258,13 +253,88 @@
   * for - empty 태그 : for문 도는 시퀀스의  요소가 아예 없을 때 수행하고 싶은 내용을 empty 밑에 적음
   * https://docs.djangoproject.com/en/3.1/ (장고 템플릿 태그 관련 설명하는 페이지)
 * exam14: `http://localhost:8000/secondapp/exam14/올라프1/10/3.87` 
+  * 매개변수가 여러 개 이므로 URL 뒤에 아규먼트 준 것. 
   * class 속성에 card나 btn 같은 이름을 부여했을 때 자동으로 여러가지 설정이 됨
   * why?
   * base.html에 **부트스트랩이 제공하는 기능**을 빌려다 쓴 코드가 있기 때문에 가능
     * ex) https://www.w3schools.com/bootstrap4/bootstrap_buttons.asp
     * 해당되는 클래스 속성을 따라 쓴 것.
+  * `{% load static %}` 
+    * `<img class="card-img-top" src="{% static 'images/olaf1.png' %}" alt="Card image" style="width:100%">`
+    * 평소 쓰던 하드 코딩이 아닌 static 태그를 사용한 이미지 경로 설정 예시
+    * 어떤 서버에 배포하든 유연성이 있기 때문에 static 태그가 좋다.
 
-> exam 14 설명하다가 끝, 0129에 이어서 진행
+>  01/28 수업 끝. 
 
+* exam15,16,17,18: urls에 설정한 name을 form 태그에 주어 페이지 이동하는 예시 
 
+  ```html
+  <form action="{% url 'unico' %}" method="GET">
+    <input type="text" name="message">
+    <input type="submit">
+  ```
 
+* exam19: 날짜와 시간 정보 출력하는 예제
+
+  * ```python
+    dt = datetime.now()
+    ```
+
+* exam20: AJOX 소개하는 샘플
+  * 웹클라이언트 강의교안에 있음
+
+#### XML
+
+* 규격화 시킨 문서를 만들고 싶을 때 사용
+* 태그명을 용도에 맞게 직접 정의하여 사용 가능하다.
+* <시작태그>로 시작해서 </종료태그>로 종료.
+
+#### JSON
+
+* JSON(JavaScript Object Notation) 은 인터넷에서 자료를 주고 받을 때 그 자료를 표현하는 방법이다.
+* 형식은 자바스크립트의 구문 형식을 따름
+
+* JSON 객체는 파이썬에서는 딕셔너리
+
+ #### AJAX
+
+* Asynchronous JavaScript and XML (비동기적인 자바스크립트와 XML)
+  * 고전적인 웹의 통신 방법은 웹페이지의 일부분을 갱신하기 위해서는 페이지 전체를 다시 로드해야했다.
+  * AJAX의 핵심은 **재로드하지 않고 웹페이지의 일부만을 갱신**하여 웹서버와 데이터를 교환하는 방식
+  * 즉, 빠르게 동적 웹페이지를 생성하는 기술이다.
+
+* 장점은 현재 페이지를 그대로 고정시킨 상태에서 서버의 응답을 받고 처리할 수 있다.
+  * 전체 페이지를 다시 끌어오는 것이 아니라 필요한 만큼만 가져온다.
+* jQuery의 AJAX 지원 API
+  * 그 중 `$.ajax()` 와 `$.getJSON()` 을 이용하여 수업에서 다룰 예정
+
+#### AJAX 프로그래밍 핵심 내용
+
+(1)  JSON(XML) 형식으로 응답하는 뷰를 준비해야 한다.
+
+* 템플릿을 거치지 않고, 뷰가 직접응답함
+
+(2) - 1.  JavaScript만 사용해서 AJAX 요청을 구현하는 방법
+
+* `var xhr = new XMLHttpRequest()`
+* `xhr onload = 함수`
+* `xhr open("GET", "대상URL", true)`
+* `xhr.send()`
+
+(2) - 2. jQuery API를 사용하여 AJAX 요청을 구현하는 방법
+
+* `$.getJSON("대상URL", 함수)`
+  * 이게 위보다 훨씬 간편함
+
+#### view.py의 json1/2/3
+
+* 3개 모두 템플릿 없이 뷰에서 직접 처리하는 예제
+
+**JsonResponse**
+
+* 첫번째 아규먼트는 딕셔너리 이어야 함
+* 딕셔너리가 아닌 다른 자료형을 받을 경우, 두번째 아규먼트를 `safe =False`로 설정해야한다.
+* `json_dumps_params` 는 `json.dumps()`에 전달할 딕셔너리의 keyword arguments임
+* json1: JsonResponse 일반적인 예시, 두번째 아규먼트로 keyword arguments임
+* json2: 첫번째 아규먼트로 리스트를 주었고, 두번째에 `safe =False`  주었음
+* json3: 
