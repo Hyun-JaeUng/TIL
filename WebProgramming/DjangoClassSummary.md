@@ -178,7 +178,7 @@
   * GET: Query 문자열이 외부에 보여짐. 요청 URL 뒤에 ? 기호와 함께 전달되기 때문
   * POST: Query 문자열이 외부에 보여지지않고, 길이에 제한이 없다. 
 
-#### secondapp.exam3~ 
+#### secondapp.exam 
 
 * exam3:  `선택한 번호 : {{ number }}` -> number라는 키를 가진 딕셔너리 값인 5가 출력
 
@@ -281,6 +281,7 @@
     ```
 
 * exam20: AJOX 소개하는 샘플
+  
   * 웹클라이언트 강의교안에 있음
 
 #### XML
@@ -337,4 +338,50 @@
 * `json_dumps_params` 는 `json.dumps()`에 전달할 딕셔너리의 keyword arguments임
 * json1: JsonResponse 일반적인 예시, 두번째 아규먼트로 keyword arguments임
 * json2: 첫번째 아규먼트로 리스트를 주었고, 두번째에 `safe =False`  주었음
-* json3: 
+* json3: `json_dumps_params={'ensure_ascii':False}`  의미 질문.
+
+ #### second.app exam
+
+* exam20: `$('p').click(function(e) ~~~ `  : e는 사건이 일어나는 이벤트 객체를 매개변수로 선언한 것
+  * getJSON 이용하여 자바스크립트 객체로 data 변수에 가져옴
+* exam21~24: 영화관 오픈 API를 AJAX 기술로 활용한 예시
+* exam21: `$.ajax` 사용하여 json 객체로 가져옴
+  * jsonviewer 사용하여 편하게 보는 방법도 소개함 (구글 검색하면 나옴)
+  * 주석으로 막아놓은 코드는 `$.getJSON`으로 한 예제
+
+* exam23: `targetDt` 를 이용하여 하드코딩이 아닌 소프트코딩한 예시
+  * 날짜를 계속해서 변화하게 해줌. (URL 뒤에 targetDt 넣음)
+* exam24: 영화 썸네일 포함시킴 (이미지)
+
+#### Same Origin Policy (SOP)
+
+* 브라우저에서 보안상의 이슈로 동일 사이트의 자원만 접근해야 한다는 제약 (서버 컨텐츠 보호를 위해)
+* AJAX는 이 제약에 영향을 받으므로 Origin 서버가 아니면 AJAX로 요청한 컨텐츠를 수신할 수 없다.
+
+#### Cross Origin Resource Sharing (CORS)
+
+* Origin이 아닌 다른 사이트의 자원을 접근하여 사용한다는 의미
+* Open API의 활성화와 공공 DB의 활용에 의해서 CORS의 중요성이 강조되고 있음
+* HTTP Header에 CORS와 관련된 항목을 추가한다.
+  * `response.addHeader("Access-Control-Allow-Origin","*");` 을 추가해야됨
+  * exam 예제의 경우, CORS 추가하였기 때문에 사용가능하였음
+
+#### 서울시 빅데이터 URL
+
+http://openapi.seoul.go.kr:8088/796143536a756e69313134667752417a/json/LampScpgmtb/1/100/
+
+#### product 1/2 review
+
+* 실습 코드 보며 리뷰 - 파일에 정리
+
+#### ggmap exam
+
+* google.maps 사용하려면 스크립트 태그에 구글맵 URL과 키가 필요함
+* `encodeURIcomponent()` 를 통해 쿼리문자열에 사용할 수 있도록 한글 맞춰서 인코딩해줌.
+
+#### kkmap exam
+
+* https://apis.map.kakao.com/
+  * API 샘플과 코드들 정리 잘 되어있음.
+
+> 01/29 수업 끝
