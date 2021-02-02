@@ -486,4 +486,18 @@ http://openapi.seoul.go.kr:8088/796143536a756e69313134667752417a/json/LampScpgmt
 #### 필드 타입
 
 * 모델의 필드에는 다음과 같이 다양한 타입들이 있고, 모든 필드 타입 클래스들은 "Field" 클래스의 자손 클래스들임
+* CharField: 제한된 문자열 필드 타입, 최대 길이를 max_length 옵션에 꼭 지정해야 함
+* DateTimeField: 날짜와 시간을 갖는 필드, 날짜만 가질 경우는 DateField, 시간만 가질 경우는 TimeField를 사용함
+  * auto_now_add(생성)과 auto_now(수정)을 true로 설정하면 생성 또는 수정시 기본 타임존 시간으로 변경됨
+* 등등 이외 필드 타입 많음
+
+<br>
+
+0202
+
+#### Heidi SQL
+
+* RDBMS 에서 테이블 생성시 컬럼단위로 컬럼명과 타입을 설정
+  * CharField --> VARCHAR (가변길이)
+* DB관련 여러가지 파일 내용 수행
 * 
