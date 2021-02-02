@@ -495,9 +495,17 @@ http://openapi.seoul.go.kr:8088/796143536a756e69313134667752417a/json/LampScpgmt
 
 0202
 
-#### Heidi SQL
+* Heidi SQL: DBMS를 직접 접속하여 사용할 때 쓰는 클라이언트 무료 프로그램
+  * 설치 후 테이블 생성 예제
+  * CSV 파일 가져와서 DB에 저장
+* 마이그레이션 파일 (초안) 생성하기: `python manage.py makemigrations [app name]` (앱 이름 생략 가능)
+  * 이후 특정 파일지정을 통한 migrate: `python manage.py migrate <app name>`
 
 * RDBMS 에서 테이블 생성시 컬럼단위로 컬럼명과 타입을 설정
   * CharField --> VARCHAR (가변길이)
-* DB관련 여러가지 파일 내용 수행
-* 
+* forthapp 생성 후 웹페이지 CRUD 코드 리뷰
+  * model.py의 클래스 개념 보충하기! 
+
+<br>
+
+0203
