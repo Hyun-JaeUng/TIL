@@ -1,8 +1,17 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="zxx">
 {% load static %}
 
-<head>
+<head><script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"> </script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/mixitup.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
     <meta charset="UTF-8">
     <meta name="description" content="HVAC Template">
     <meta name="keywords" content="HVAC, unica, creative, html">
@@ -25,7 +34,6 @@
     <link rel="stylesheet" href='{% static "css/owl.carousel.min.css" %}'>
     <link rel="stylesheet" href='{% static "css/slicknav.min.css" %}'>
     <link rel="stylesheet" href='{% static "css/style.css" %}'>
-
 </head>
 
 <body>
@@ -43,7 +51,7 @@
             <a href="#" class="primary-btn">Add Car</a>
         </div>
         <div class="offcanvas__logo">
-            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+            <a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
         <ul class="offcanvas__widget__add">
@@ -95,25 +103,30 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-10">
                     <div class="header__nav">
                         <nav class="header__menu">
+                            <!--  수정  -->
                             <ul>
-                                <li class="active"><a href="./index.html">Home</a></li>
-                                <li><a href="./car.html">Cars</a></li>
-                                <li><a href="./blog.html">Blog</a></li>
-                                <li><a href="#">Pages</a>
+                                <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                                <li><a href="{% url 'car' %}">충전소 찾기</a></li>
+                                <li><a href="{% url 'blog_details' %}">전기차 정보</a></li>
+                                <li><a href="#">구매 및 지원</a>
                                     <ul class="dropdown">
-                                        <li><a href="./about.html">About Us</a></li>
-                                        <li><a href="./car-details.html">Car Details</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
+                                        <li><a href="{% url 'about' %}">국고 보조금</a></li>
+                                        <li><a href="{% url 'car_details' %}">지자체 보조금</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="./about.html">About</a></li>
-                                <li><a href="./contact.html">Contact</a></li>
+                                <li><a href="{% url 'about' %}">게시판</a></li>
+                                <li><a href="{% url 'contact' %}">마이페이지</a>
+                                    <ul class="dropdown">
+                                        <li><a href="{% url 'car_details' %}">내 정보</a></li>
+                                        <li><a href="{% url 'blog_details' %}">즐겨찾기</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </nav>
                         <div class="header__nav__widget">
@@ -142,7 +155,6 @@
                         <div class="col-xl-8 col-lg-9">
                             <!-- Hero Caption -->
                             <div class="hero__caption">
-                                <span>Explore the city</span>
                                 <h2 id="FindTitle">전기차 충전소를 찾아보세요</h2></br>
                             </div>
                             <!--Hero form -->
@@ -170,12 +182,11 @@
                 </div>
             </div>
         </div>
-        </div>
     </section>
     <!-- Hero Section End -->
 
     <!-- Services Section Begin -->
-    <section class="services spad">
+        <section class="services spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -189,7 +200,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="services__item">
-                        <img src="img/services/map1.png" alt="">
+                        <img src="{% static 'img/services/map1.png' %}" alt="">
                         <h5>전기차 충전소 위치 제공</h5>
                         <p>현 위치 정보를 기준으로 가까운 충전소 제시함</p>
                         <a href="#"><i class="fa fa-long-arrow-right"></i></a>
@@ -197,7 +208,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="services__item">
-                        <img src="img/services/car1.png" alt="">
+                        <img src="{% static 'img/services/car1.png' %}" alt="">
                         <h5>전기차 모델 소개</h5>
                         <p>국내 판매량을 기준으로 전기차 모델을 소개</p>
                         <a href="#"><i class="fa fa-long-arrow-right"></i></a>
@@ -205,7 +216,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="services__item">
-                        <img src="img/services/money1.png" alt="">
+                        <img src="{% static 'img/services/money1.png' %}" alt="">
                         <h5>구매 보조금 정보 제공</h5>
                         <p>전기차 구매 시 보조금에 대한 정보 제공</p>
                         <a href="#"><i class="fa fa-long-arrow-right"></i></a>
@@ -244,7 +255,7 @@
                         <div class="col-lg-6 col-md-4 col-6">
                             <div class="feature__item">
                                 <div class="feature__item__icon">
-                                    <img src="img/feature/feature-1.png" alt="">
+                                    <img src="{% static 'img/feature/feature-1.png' %}" alt="">
                                 </div>
                                 <h6>Engine</h6>
                             </div>
@@ -252,7 +263,7 @@
                         <div class="col-lg-6 col-md-4 col-6">
                             <div class="feature__item">
                                 <div class="feature__item__icon">
-                                    <img src="img/feature/feature-2.png" alt="">
+                                    <img src="{% static 'img/feature/feature-2.png' %}" alt="">
                                 </div>
                                 <h6>Turbo</h6>
                             </div>
@@ -260,7 +271,7 @@
                         <div class="col-lg-6 col-md-4 col-6">
                             <div class="feature__item">
                                 <div class="feature__item__icon">
-                                    <img src="img/feature/feature-3.png" alt="">
+                                    <img src="{% static 'img/feature/feature-3.png' %}" alt="">
                                 </div>
                                 <h6>Colling</h6>
                             </div>
@@ -268,7 +279,7 @@
                         <div class="col-lg-6 col-md-4 col-6">
                             <div class="feature__item">
                                 <div class="feature__item__icon">
-                                    <img src="img/feature/feature-4.png" alt="">
+                                    <img src="{% static 'img/feature/feature-4.png' %}" alt="">
                                 </div>
                                 <h6>Suspension</h6>
                             </div>
@@ -276,7 +287,7 @@
                         <div class="col-lg-6 col-md-4 col-6">
                             <div class="feature__item">
                                 <div class="feature__item__icon">
-                                    <img src="img/feature/feature-5.png" alt="">
+                                    <img src="{% static 'img/feature/feature-5.png' %}" alt="">
                                 </div>
                                 <h6>Electrical</h6>
                             </div>
@@ -284,7 +295,7 @@
                         <div class="col-lg-6 col-md-4 col-6">
                             <div class="feature__item">
                                 <div class="feature__item__icon">
-                                    <img src="img/feature/feature-6.png" alt="">
+                                    <img src="{% static 'img/feature/feature-6.png' %}" alt="">
                                 </div>
                                 <h6>Brakes</h6>
                             </div>
@@ -315,10 +326,10 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix">
                     <div class="car__item">
                         <div class="car__item__pic__slider owl-carousel">
-                            <img src="img/cars/car-1.jpg" alt="">
-                            <img src="img/cars/car-8.jpg" alt="">
-                            <img src="img/cars/car-6.jpg" alt="">
-                            <img src="img/cars/car-3.jpg" alt="">
+                            <img src="{% static 'img/cars/car-1.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-8.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-6.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-3.jpg' %}" alt="">
                         </div>
                         <div class="car__item__text">
                             <div class="car__item__text__inner">
@@ -340,10 +351,10 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix sale">
                     <div class="car__item">
                         <div class="car__item__pic__slider owl-carousel">
-                            <img src="img/cars/car-2.jpg" alt="">
-                            <img src="img/cars/car-8.jpg" alt="">
-                            <img src="img/cars/car-6.jpg" alt="">
-                            <img src="img/cars/car-4.jpg" alt="">
+                            <img src="{% static 'img/cars/car-2.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-8.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-6.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-4.jpg' %}" alt="">
                         </div>
                         <div class="car__item__text">
                             <div class="car__item__text__inner">
@@ -365,10 +376,10 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix">
                     <div class="car__item">
                         <div class="car__item__pic__slider owl-carousel">
-                            <img src="img/cars/car-3.jpg" alt="">
-                            <img src="img/cars/car-8.jpg" alt="">
-                            <img src="img/cars/car-6.jpg" alt="">
-                            <img src="img/cars/car-5.jpg" alt="">
+                            <img src="{% static 'img/cars/car-3.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-8.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-6.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-5.jpg' %}" alt="">
                         </div>
                         <div class="car__item__text">
                             <div class="car__item__text__inner">
@@ -390,10 +401,10 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix sale">
                     <div class="car__item">
                         <div class="car__item__pic__slider owl-carousel">
-                            <img src="img/cars/car-4.jpg" alt="">
-                            <img src="img/cars/car-8.jpg" alt="">
-                            <img src="img/cars/car-2.jpg" alt="">
-                            <img src="img/cars/car-1.jpg" alt="">
+                            <img src="{% static 'img/cars/car-4.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-8.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-2.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-1.jpg' %}" alt="">
                         </div>
                         <div class="car__item__text">
                             <div class="car__item__text__inner">
@@ -415,10 +426,10 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix">
                     <div class="car__item">
                         <div class="car__item__pic__slider owl-carousel">
-                            <img src="img/cars/car-5.jpg" alt="">
-                            <img src="img/cars/car-8.jpg" alt="">
-                            <img src="img/cars/car-7.jpg" alt="">
-                            <img src="img/cars/car-2.jpg" alt="">
+                            <img src="{% static 'img/cars/car-5.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-8.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-7.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-2.jpg' %}" alt="">
                         </div>
                         <div class="car__item__text">
                             <div class="car__item__text__inner">
@@ -440,10 +451,10 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix sale">
                     <div class="car__item">
                         <div class="car__item__pic__slider owl-carousel">
-                            <img src="img/cars/car-6.jpg" alt="">
-                            <img src="img/cars/car-8.jpg" alt="">
-                            <img src="img/cars/car-3.jpg" alt="">
-                            <img src="img/cars/car-1.jpg" alt="">
+                            <img src="{% static 'img/cars/car-6.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-8.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-3.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-1.jpg' %}" alt="">
                         </div>
                         <div class="car__item__text">
                             <div class="car__item__text__inner">
@@ -465,10 +476,10 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix">
                     <div class="car__item">
                         <div class="car__item__pic__slider owl-carousel">
-                            <img src="img/cars/car-7.jpg" alt="">
-                            <img src="img/cars/car-2.jpg" alt="">
-                            <img src="img/cars/car-4.jpg" alt="">
-                            <img src="img/cars/car-1.jpg" alt="">
+                            <img src="{% static 'img/cars/car-7.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-2.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-4.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-1.jpg' %}" alt="">
                         </div>
                         <div class="car__item__text">
                             <div class="car__item__text__inner">
@@ -490,10 +501,10 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 mix">
                     <div class="car__item">
                         <div class="car__item__pic__slider owl-carousel">
-                            <img src="img/cars/car-8.jpg" alt="">
-                            <img src="img/cars/car-3.jpg" alt="">
-                            <img src="img/cars/car-5.jpg" alt="">
-                            <img src="img/cars/car-2.jpg" alt="">
+                            <img src="{% static 'img/cars/car-8.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-3.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-5.jpg' %}" alt="">
+                            <img src="{% static 'img/cars/car-2.jpg' %}" alt="">
                         </div>
                         <div class="car__item__text">
                             <div class="car__item__text__inner">
@@ -543,7 +554,7 @@
             </div>
         </div>
         <div class="chooseus__video set-bg">
-            <img src="img/chooseus-video.png" alt="">
+            <img src="{% static 'img/chooseus-video.png' %}" alt="">
             <a href="https://www.youtube.com/watch?v=Xd0Ok-MkqoE"
                 class="play-btn video-popup"><i class="fa fa-play"></i></a>
         </div>
@@ -566,7 +577,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="latest__blog__item">
-                        <div class="latest__blog__item__pic set-bg" data-setbg="img/latest-blog/lb-1.jpg">
+                        <div class="latest__blog__item__pic set-bg" data-setbg="{% static 'img/latest-blog/lb-1.jpg' %}">
                             <ul>
                                 <li>By Polly Williams</li>
                                 <li>Dec 19, 2018</li>
@@ -584,7 +595,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="latest__blog__item">
-                        <div class="latest__blog__item__pic set-bg" data-setbg="img/latest-blog/lb-2.jpg">
+                        <div class="latest__blog__item__pic set-bg" data-setbg="{% static 'img/latest-blog/lb-2.jpg' %}">
                             <ul>
                                 <li>By Mattie Ramirez</li>
                                 <li>Dec 19, 2018</li>
@@ -602,7 +613,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="latest__blog__item">
-                        <div class="latest__blog__item__pic set-bg" data-setbg="img/latest-blog/lb-3.jpg">
+                        <div class="latest__blog__item__pic set-bg" data-setbg="{% static 'img/latest-blog/lb-3.jpg' %}">
                             <ul>
                                 <li>By Nicholas Brewer</li>
                                 <li>Dec 19, 2018</li>
@@ -628,13 +639,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
-                    <div class="cta__item set-bg" data-setbg="img/cta/cta-1.jpg">
+                    <div class="cta__item set-bg" data-setbg="{% static 'img/cta/cta-1.jpg' %}">
                         <h4>Do You Want To Buy A Car</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
-                    <div class="cta__item set-bg" data-setbg="img/cta/cta-2.jpg">
+                    <div class="cta__item set-bg" data-setbg="{% static 'img/cta/cta-2.jpg' %}">
                         <h4>Do You Want To Rent A Car</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
                     </div>
@@ -645,7 +656,7 @@
     <!-- Cta End -->
 
     <!-- Footer Section Begin -->
-    <footer class="footer set-bg" data-setbg="img/footer-bg.jpg">
+    <footer class="footer set-bg" data-setbg="{% static 'img/footer-bg.jpg' %}">
         <div class="container">
             <div class="footer__contact">
                 <div class="row">
@@ -666,7 +677,7 @@
                 <div class="col-lg-4 col-md-4">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="#"><img src="img/footer-logo.png" alt=""></a>
+                            <a href="#"><img src="{% static 'img/footer-logo.png' %}" alt=""></a>
                         </div>
                         <p>Any questions? Let us know in store at 625 Gloria Union, California, United Stated or call us
                             on (+1) 96 123 8888</p>
